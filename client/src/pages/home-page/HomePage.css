@@ -1,0 +1,9 @@
+ion-content {
+  --ion-background-color: var(--purple-dark);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

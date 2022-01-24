@@ -1,0 +1,19 @@
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  display: grid;
+  place-content: center;
+}
+
+.full-size {
+  width: 100%;
+  height: 100%;
+}
