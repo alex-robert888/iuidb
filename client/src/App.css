@@ -1,0 +1,11 @@
+ion-content {
+  --ion-background-color: var(--purple-dark);
+  --padding-top: 3em;
+  --padding-start: 6em;
+  --padding-end: 6em;
+}
+
+ion-toolbar {
+  --padding-start: 6em;
+  --padding-end: 6em;
+}

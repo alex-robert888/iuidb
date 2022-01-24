@@ -1,9 +1,21 @@
-ion-content {
-  --ion-background-color: var(--purple-dark);
+#home-page__ion-content {
+  --padding-top: 10em !important;
+  --padding-start: 13em !important;
+  --padding-end: 13em !important;
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#home-page-row-1 {
+  margin-bottom: 0.75em;
+}
+
+#home-page-row-2 {
+  margin-bottom: 3em;
+}
+
+#home-page__buttons > * {
+  margin: 0 1em;
+}
+
+h1 {
+  color: var(--purple-light);
 }

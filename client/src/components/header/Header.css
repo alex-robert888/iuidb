@@ -1,0 +1,26 @@
+ion-toolbar {
+  --background: var(--purple-xdark);
+}
+
+img {
+  height: 2.1em;
+}
+
+#header__nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+ul:first-child {
+  margin-right: 2em;
+}
+
+li {
+  margin-left: 1.5em;
+}
+
+li > a {
+  color: white;
+  font-weight: bold;
+}

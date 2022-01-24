@@ -1,7 +1,8 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import HomePage from './pages/home-page/HomePage'; 
+import HomePage from './pages/home-page/HomePage';
+import './App.css'; 
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -21,6 +22,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './theme/classes.css';
 import LogInPage from './pages/log-in-page/LogInPage';
 import RegisterPage from './pages/register-page/RegisterPage';
 
