@@ -1,0 +1,30 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-content: center;
+}
+
+.popup__content {
+  background-color: var(--purple-dark);
+  border: 1px solid rgb(98, 98, 98);
+  padding: 2em;
+}
+
+form {
+  width: 25em;
+}
+
+li {
+  margin-bottom: 1em;
+  margin-left: 0 !important;
+}
+
+input {
+  width: 100%;
+}

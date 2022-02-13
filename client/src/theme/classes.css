@@ -13,6 +13,10 @@
   font-size: 3.75em;
 }
 
+.text-bold {
+  font-weight: 700;
+}
+
 .button {
   cursor: pointer;
   outline: none;
@@ -33,8 +37,19 @@
   color: #070422;
 }
 
+.button-red {
+  background: #b92d28;
+  border: none;
+  color:  #ffffff;
+}
+
 .button-small {
   padding: 0.25em 1.2em;
+}
+
+.button-medium {
+  padding: 0.55em 2.2em;
+  font-size: 1em;
 }
 
 .button-large {
@@ -78,4 +93,16 @@
 
 .form {
   width: 25em;
+}
+
+.pull-right {
+  margin-left: auto;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.hidden {
+  display: none !important;
 }

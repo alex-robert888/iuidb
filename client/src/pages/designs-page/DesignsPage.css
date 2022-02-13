@@ -1,0 +1,13 @@
+.design-card {
+  width: 35em;
+}
+
+.design-card > button {
+  margin-right: 1.5em;
+}
+
+hr {
+  height: 1px;
+  background-color: rgb(139, 139, 139);
+  border: none;
+}

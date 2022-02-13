@@ -25,6 +25,7 @@ import './theme/variables.css';
 import './theme/classes.css';
 import LogInPage from './pages/log-in-page/LogInPage';
 import RegisterPage from './pages/register-page/RegisterPage';
+import DesignsPage from './pages/designs-page/DesignsPage';
 
 setupIonicReact();
 
@@ -34,6 +35,7 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route exact path="/log-in"> <LogInPage /> </Route>
         <Route exact path="/register"> <RegisterPage /> </Route>
+        <Route exact path="/designs"> <DesignsPage /> </Route>
         <Route exact path="/home"> <HomePage /> </Route>
         <Route exact path="/"> <Redirect to="/home" /> </Route>
       </IonRouterOutlet>

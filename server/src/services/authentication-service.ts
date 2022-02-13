@@ -17,14 +17,11 @@ export default class AuthenticationService {
   }
 
   async login(): Promise<string> {
-    await this.validateEmailAndPassword();
+    const mongoModelByEmail = await MongoUser.findOne({ email: this.user.attributes.email }).orFail();
+    await bcrypt.compare(this.user.attributes.password, mongoModelByEmail.password);
+    this.user.attributes.id = mongoModelByEmail._id;
 
     const accessToken = jwt.sign(this.user.attributes, process.env.ACCESS_TOKEN_SECRET);
     return accessToken;
-  }
-
-  private async validateEmailAndPassword() {
-    const mongoModelByEmail = await MongoUser.findOne({ email: this.user.attributes.email }).orFail();
-    await bcrypt.compare(this.user.attributes.password, mongoModelByEmail.password);
   }
 }
