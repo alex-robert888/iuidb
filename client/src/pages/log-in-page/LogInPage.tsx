@@ -14,7 +14,6 @@ const LogInPage: React.FC = () => {
 
   async function logIn(e: any) {
     e.preventDefault();
-    console.log(`user attributes: ${JSON.stringify(userLogInAttributes)}`)
 
     try {
       const user = new User(userLogInAttributes);

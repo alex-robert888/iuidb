@@ -14,7 +14,6 @@ const RegisterPage: React.FC = () => {
 
   async function register(e: any) {
     e.preventDefault();
-    console.log(`user attributes: ${JSON.stringify(userRegistrationAttributes)}`)
 
     try {
       const user = new User(userRegistrationAttributes);

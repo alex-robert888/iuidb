@@ -1,14 +1,11 @@
 import { IonContent, IonPage } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/header/Header';
-import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import Popup from '../../components/popup/Popup';
 import './DesignsPage.css'
-import axios from 'axios';
 import DesignsService from '../../services/designs-service';
 import IDesign from '../../../../common/models/design';
 import Design from '../../models/design';
-import { render } from '@testing-library/react';
 
 
 const DesignsPage: React.FC = () => {
@@ -22,7 +19,6 @@ const DesignsPage: React.FC = () => {
   const fetchDesigns = async () => {
     try {
       const designs = await designsService.index();
-      console.log("** FETCH Designs: ", designs);
       setDesigns(designs);
     } catch (e) {
       console.error(e);
@@ -31,7 +27,6 @@ const DesignsPage: React.FC = () => {
 
   async function createDesign() {
     try {
-      console.log("** NEW Design: ", newDesign);
       const design = new Design(newDesign);
       await designsService.create(design);
     } catch (e) {
@@ -43,7 +38,6 @@ const DesignsPage: React.FC = () => {
 
   async function updateDesign() {
     try {
-      console.log("** EDIT Design: ", editDesign);
       const design = new Design(editDesign);
       await designsService.update(design);
     } catch (e) {
@@ -55,7 +49,6 @@ const DesignsPage: React.FC = () => {
 
   async function onDeleteButtonClick(deleteDesign: Design) {
     try {
-      console.log("** DELETE Design ID: ", deleteDesign.attributes._id);
       await designsService.delete(deleteDesign);
     } catch (e) {
       alert(e)

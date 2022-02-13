@@ -6,7 +6,6 @@ import MongoDesign from '../database/models/mongo-design';
 
 router.get('/', authenticateToken, async (req: any, res: any, next: any) => {
   try {
-    console.log("GET Designs USER: ", req.user)
     const designs = await MongoDesign.find({ userId: req.user.id });
     res.json(designs);
   } catch(e) {
@@ -16,9 +15,6 @@ router.get('/', authenticateToken, async (req: any, res: any, next: any) => {
 
 router.post('/', authenticateToken, async (req: any, res: any, next: any) => {
   try {
-    console.log("POST Designs USER: ", req.user)
-    console.log("POST Designs BODY: ", req.body)
-
     const design = new MongoDesign({...req.body, userId: req.user.id});
     await design.save();
     res.json({ message: "Design successfully created." })
@@ -29,7 +25,6 @@ router.post('/', authenticateToken, async (req: any, res: any, next: any) => {
 
 router.put('/:id', authenticateToken, async (req: any, res: any, next: any) => {
   try {
-    console.log("PUT ID: ", req.params['id'])
     await MongoDesign.findOneAndUpdate({ userId: req.user.id, _id: req.params['id'] }, req.body);
     res.json({ message: "Design successfully updated." })
   } catch(e) {
