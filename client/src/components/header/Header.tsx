@@ -3,6 +3,8 @@ import './Header.css';
 import { Link, useHistory } from 'react-router-dom';
 import logo from '../../assets/images/logo.svg';
 import { Fragment } from 'react';
+import ReactPaginate from 'react-paginate';
+
 
 const Header: React.FC = () => {
   const history = useHistory();

@@ -7,15 +7,21 @@ import './DesignsPage.css'
 import DesignsService from '../../services/designs-service';
 import IDesign from '../../../../common/models/design';
 import Design from '../../models/design';
+import ReactPaginate from 'react-paginate';
+
 
 
 const DesignsPage: React.FC = () => {
   const [isCreatePopupOpen, setIsCreatePopupOpen] = useState<boolean>(false);
   const [isEditPopupOpen, setIsEditPopupOpen] = useState<boolean>(false);
-  const [designs, setDesigns] = useState<Array<any>>([]);
+  const [designs, setDesigns] = useState<Array<any | null>>([]);
   const [newDesign, setNewDesign] = useState<IDesign>({ title: "", description: "", url: "" });
   const [editDesign, setEditDesign] = useState<IDesign>({ title: "", description: "", url: "" });
   const designsService = new DesignsService();
+  const [currentItems, setCurrentItems] = useState<Array<any>>([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 3;
 
   const fetchDesigns = async () => {
     try {
@@ -63,6 +69,14 @@ const DesignsPage: React.FC = () => {
     setIsEditPopupOpen(true);
   }
 
+  const handlePageClick = (event: any) => {
+    const newOffset = (event.selected * itemsPerPage) % designs.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
+
   useEffect(() => {
     fetchDesigns();
 
@@ -72,8 +86,15 @@ const DesignsPage: React.FC = () => {
     });
   }, [])
 
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    setCurrentItems(designs.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(designs.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage])
+
   function renderDesigns() {
-    return designs.map((design: Design) => (
+    return currentItems.map((design: Design) => (
       <li key={design.attributes._id}>
         <article className="design-card">
           <h3 className="text-bold ">{design.attributes.title}</h3>
@@ -96,6 +117,15 @@ const DesignsPage: React.FC = () => {
         <ul id="designs-page__ul-designs" className="ul">
           { renderDesigns() }
         </ul>
+
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="< previous"
+        />
       </IonContent>
 
       {/* Create Popup */}
