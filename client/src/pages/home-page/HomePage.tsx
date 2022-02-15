@@ -1,9 +1,18 @@
 import { IonContent, IonPage, IonGrid, IonRow } from '@ionic/react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './HomePage.css';
 import Header from '../../components/header/Header';
+import { useEffect } from 'react';
 
 const HomePage: React.FC = () => {
+  const history = useHistory();
+  
+  useEffect(() => {
+    if (localStorage.getItem("accessToken")) {
+      history.push("/designs")
+    }
+  }, [])
+
   return (
     <IonPage>
       <Header />

@@ -6,7 +6,7 @@ import MongoDesign from '../database/models/mongo-design';
 
 router.get('/', authenticateToken, async (req: any, res: any, next: any) => {
   try {
-    const designs = await MongoDesign.find({});
+    const designs = await MongoDesign.find({userId: req.user.id});
     res.json(designs);
   } catch(e) {
     next(e);

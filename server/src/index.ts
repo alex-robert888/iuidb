@@ -6,7 +6,7 @@ const morgan    = require("morgan");
 const socketIo  = require("socket.io");
 const http      = require("http");
 import connect from "./database/connect";
-import MongoDesign from "./database/models/mongo-design";
+import MongoUser from "./database/models/mongo-user";
 
 // .env
 require("dotenv").config();
@@ -47,11 +47,10 @@ const io = socketIo(server, {
 
 io.on('connection', (socket: any) => {
   console.log("New client connected");
-  socket.emit("dbChange", "What's up");
 });
 
 mongoose.connection.on('connected', () => {
   console.log('Connected to mongo instance');
-  const designEventEmitter = MongoDesign.watch()
-  designEventEmitter.on('change', change => io.emit("dbChange", JSON.stringify("A change ocurred in the Designs DB. Refresh the page to see them.")));
+  const designEventEmitter = MongoUser.watch()
+  designEventEmitter.on('change', change => io.emit("dbChange", JSON.stringify("A change ocurred in the Users DB. Refresh the page to see them.")));
 });
