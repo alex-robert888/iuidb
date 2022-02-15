@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-function connect() {
+export default function connect() {
   // Connect to the database
   mongoose.connect("mongodb://localhost/iuidb",
     () => console.log("Connected to iuidb database."),
@@ -8,4 +8,3 @@ function connect() {
   ) 
 }
 
-module.exports=connect;

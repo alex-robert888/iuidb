@@ -6,7 +6,7 @@ import MongoDesign from '../database/models/mongo-design';
 
 router.get('/', authenticateToken, async (req: any, res: any, next: any) => {
   try {
-    const designs = await MongoDesign.find({ userId: req.user.id });
+    const designs = await MongoDesign.find({});
     res.json(designs);
   } catch(e) {
     next(e);
@@ -25,7 +25,7 @@ router.post('/', authenticateToken, async (req: any, res: any, next: any) => {
 
 router.put('/:id', authenticateToken, async (req: any, res: any, next: any) => {
   try {
-    await MongoDesign.findOneAndUpdate({ userId: req.user.id, _id: req.params['id'] }, req.body);
+    await MongoDesign.findOneAndUpdate({ _id: req.params['id'] }, req.body);
     res.json({ message: "Design successfully updated." })
   } catch(e) {
     next(e);
@@ -34,7 +34,7 @@ router.put('/:id', authenticateToken, async (req: any, res: any, next: any) => {
 
 router.delete('/:id', authenticateToken, async (req: any, res: any, next: any) => {
   try {
-    await MongoDesign.findOneAndDelete({ userId: req.user.id, _id: req.params['id'] });
+    await MongoDesign.findOneAndDelete({ _id: req.params['id'] });
     res.json({ message: "Design successfully deleted." })
   } catch(e) {
     next(e);

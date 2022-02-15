@@ -1,5 +1,6 @@
 import { IonContent, IonPage } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
+import socketClient from "socket.io-client";
 import Header from '../../components/header/Header';
 import Popup from '../../components/popup/Popup';
 import './DesignsPage.css'
@@ -64,6 +65,11 @@ const DesignsPage: React.FC = () => {
 
   useEffect(() => {
     fetchDesigns();
+
+    const socket = socketClient("http://localhost:5000");
+    socket.on("dbChange", data => {
+      alert(data)
+    });
   }, [])
 
   function renderDesigns() {
